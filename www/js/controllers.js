@@ -1,6 +1,6 @@
-angular.module('starter.controllers', [])
+var controler = angular.module('PhatThanhTinLanh.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+controler.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -40,6 +40,26 @@ angular.module('starter.controllers', [])
     }, 1000);
   };
 })
+
+.controller('MusicCtrl', ['$scope', 'MediaManager', function($scope, MediaManager) {
+    $scope.tracks = [
+        {
+            url: 'http://tinlanh.org/Audio/GiaDinh/ChucTetVaKiengKy.mp3',
+            artist: 'Minh Nguyên',
+            title: 'Chúc Tết & Kiêng Kỵ',
+            art: 'http://www.tinlanh.org/images/stories/chuctetvakiengky.jpg'
+        },
+        {
+            url: 'http://tinlanh.org/Audio/PhucAm/HanhPhucThat.mp3',
+            artist: 'Mục sư Nguyễn Thỉ',
+            title: 'Hạnh Phúc Thật',
+            art: 'http://www.tinlanh.org/images/stories/muaxuanbattan.jpg'
+        }
+    ];
+    $scope.stopPlayback = function() {
+        MediaManager.stop();
+    };
+}])
 
 .controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [
